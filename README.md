@@ -6,6 +6,11 @@
 
 O **Habit's Garden** é uma aplicação de gerenciamento de hábitos e metas pessoais com foco no progresso semanal. Foi desenvolvida com o objetivo de tornar o acompanhamento de metas mais gerenciável e motivador, permitindo que novos hábitos sejam cultivados de forma mais consistente.
 
+### 📺 Demonstração 
+
+[![Demonstração do Projeto](https://img.youtube.com/vi/eJPCw3maToo/0.jpg)](https://www.youtube.com/watch?v=eJPCw3maToo)
+
+
 ### 🎯 Motivação
 
 Este projeto foi criado para me ajudar a:
@@ -14,8 +19,7 @@ Este projeto foi criado para me ajudar a:
 - Manter a minha consistência nos estudos, mas principalmente no autocuidado.
 - Transformar os meus objetivos maiores em marcos semanais alcançáveis, reduzindo a ansiedade.
 
-## ✨ Funcionalidades
-
+## ✨ Funcionalidade
 ### 📋 Gestão de Tarefas
 - ✅ Adicionar, editar e excluir tarefas diárias.
 - 🏷️ Categorização (estudo, autocuidado, trabalho, pessoal).
