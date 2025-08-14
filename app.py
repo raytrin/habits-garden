@@ -4,18 +4,46 @@ from modulos.registro import adicionar_tarefa, seleciona_tarefas, editar_tarefa_
 from modulos.metas import seleciona_metas, editar_metas_por_indice, excluir_metas_por_indice, adicionar_metas, excluir_metas_por_periodo
 from modulos.relatorios import gerar_relatorio, gerar_dados_grafico
 from modulos.utilidades import formatar_tempo, mostra_frases
+from modulos.auth import login, logout
 
+# ---------------------------------------------- inicializa estados --------------------------------------------------
+if "login" not in st.session_state:
+    st.session_state.login = False
+if "user" not in st.session_state:
+    st.session_state.user = ""
+if "senha" not in st.session_state:
+    st.session_state.senha = ""
 
+# ----------------------------------------------------- login --------------------------------------------------------
+if not st.session_state.login:
+    with st.form("form_login"):
+        st.subheader("Login 🌱")
+        st.divider()
+        st.text_input("Username: ", key="user")
+        st.text_input("Senha: ", type="password", key="senha")
+        enviar = st.form_submit_button("Entrar", use_container_width=True)
+        if enviar:
+            if login():
+                st.rerun()
+            else:
+                st.error("Usuário ou senha inválidos.")
+    st.stop()
+#-------------------------------------------------------- app ----------------------------------------------------
 st.set_page_config(page_title="Habit's Garden", layout="centered", page_icon="🌷")
 st.markdown(
     "<h1 style='text-align: center;'>🌷 Habit's Garden 🌷</h1>",
     unsafe_allow_html=True)
 
-menu = st.sidebar.selectbox("🌸 Escolha uma opção 🌸", ["Página Inicial", "Ver Tarefas", "Adicionar Tarefas", "Excluir Tarefas", "Editar Tarefas", "Ver Metas", "Adicionar Metas", "Editar Metas", "Excluir Metas", "Exibir Relatório"])
+menu = st.sidebar.selectbox("🌸 Escolha uma opção 🌸", ["Página Inicial", "Ver Tarefas", "Adicionar Tarefas", "Excluir Tarefas",
+                        "Editar Tarefas", "Ver Metas", "Adicionar Metas", "Editar Metas", "Excluir Metas", "Exibir Relatório", "Sair"])
+
+#---------------------------------------------------- logout -------------------------------------------------------
+if menu == "Sair":
+    logout()
+    st.rerun()
 
 #--------------------------------------------------- pagina inicial-------------------------------------------------
 if menu == "Página Inicial":
-
 
     st.markdown(
         "<h6 style='text-align: center; color: #FFB6C1; '>Cultivando a pessoa que você quer ser, uma semana de cada vez.</h6>",
@@ -43,6 +71,8 @@ if menu == "Página Inicial":
         st.write("📝 Adicione tarefas para ver o progresso da semana.")
     for item in dados:
         progresso = (item['Realizado'] / item['Meta']) * 100
+        if progresso > 100:
+            progresso = 100
         st.progress(progresso / 100)
         st.write(f"{item['Atividade']}: {progresso:.1f}%")
 
