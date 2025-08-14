@@ -118,9 +118,9 @@ Resultado: 280 minutos (103.7% da meta) ✅
 
 ## 🔄 Funcionalidades Futuras
 
+- ✅ **Sistema de login**.
 - [ ] **Gráficos interativos** nos relatórios. 
 - [ ] **Envio automático de relatórios** por email (via PythonAnywhere).
-- [ ] **Sistema de login**.
 - [ ] **Pesquisa e filtros** avançados por nome/categoria.
 - [ ] **Dashboard analytics** com métricas históricas.
 
